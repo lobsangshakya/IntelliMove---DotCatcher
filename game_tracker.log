@@ -1,722 +1,722 @@
 Game Tracker started...
 Dot consumer started...
 Action consumer started...
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 1], 'timestamp': '2025-12-17T22:02:19.734892'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 0], 'timestamp': '2025-12-17T22:07:25.524773'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 1
-Game Duration: 0.14 seconds
+Game Duration: 0.15 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 3], 'timestamp': '2025-12-17T22:02:21.847540'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 2], 'timestamp': '2025-12-17T22:07:26.276055'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 2
-Game Duration: 2.13 seconds
+Game Duration: 0.77 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 0], 'timestamp': '2025-12-17T22:02:23.307152'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 0], 'timestamp': '2025-12-17T22:07:27.538856'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 3
-Game Duration: 3.59 seconds
+Game Duration: 2.03 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 4], 'timestamp': '2025-12-17T22:02:24.780577'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 4], 'timestamp': '2025-12-17T22:07:29.143979'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 4
-Game Duration: 5.06 seconds
+Game Duration: 3.63 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 1], 'timestamp': '2025-12-17T22:02:25.527599'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 1], 'timestamp': '2025-12-17T22:07:31.106808'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 5
-Game Duration: 5.80 seconds
+Game Duration: 5.60 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 4], 'timestamp': '2025-12-17T22:02:27.313731'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 0], 'timestamp': '2025-12-17T22:07:31.717785'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 6
-Game Duration: 7.59 seconds
+Game Duration: 6.21 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 4], 'timestamp': '2025-12-17T22:02:28.590888'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 3], 'timestamp': '2025-12-17T22:07:32.339156'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 7
-Game Duration: 8.87 seconds
+Game Duration: 6.83 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 2], 'timestamp': '2025-12-17T22:02:30.353961'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 2], 'timestamp': '2025-12-17T22:07:33.038218'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 8
-Game Duration: 10.63 seconds
+Game Duration: 7.53 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 3], 'timestamp': '2025-12-17T22:02:31.730873'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 3], 'timestamp': '2025-12-17T22:07:33.590024'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 9
-Game Duration: 12.01 seconds
+Game Duration: 8.08 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 4], 'timestamp': '2025-12-17T22:02:32.612718'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 2], 'timestamp': '2025-12-17T22:07:34.240514'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 10
-Game Duration: 12.89 seconds
+Game Duration: 8.73 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 1], 'timestamp': '2025-12-17T22:02:33.856257'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 3], 'timestamp': '2025-12-17T22:07:35.674743'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 11
-Game Duration: 14.13 seconds
+Game Duration: 10.17 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 3], 'timestamp': '2025-12-17T22:02:34.820620'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 3], 'timestamp': '2025-12-17T22:07:36.463246'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 12
-Game Duration: 15.10 seconds
+Game Duration: 10.95 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 4], 'timestamp': '2025-12-17T22:02:35.453744'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 4], 'timestamp': '2025-12-17T22:07:38.068038'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 13
-Game Duration: 15.73 seconds
+Game Duration: 12.56 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 1], 'timestamp': '2025-12-17T22:02:37.154555'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 0], 'timestamp': '2025-12-17T22:07:39.176371'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 14
-Game Duration: 17.43 seconds
+Game Duration: 13.67 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 1], 'timestamp': '2025-12-17T22:02:38.327435'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 4], 'timestamp': '2025-12-17T22:07:40.242036'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 15
-Game Duration: 18.60 seconds
+Game Duration: 14.73 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 0], 'timestamp': '2025-12-17T22:02:40.037288'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 0], 'timestamp': '2025-12-17T22:07:41.573068'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 16
-Game Duration: 20.31 seconds
+Game Duration: 16.06 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 2], 'timestamp': '2025-12-17T22:02:41.618389'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 4], 'timestamp': '2025-12-17T22:07:42.167527'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 17
-Game Duration: 21.90 seconds
+Game Duration: 16.66 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 3], 'timestamp': '2025-12-17T22:02:42.943047'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 3], 'timestamp': '2025-12-17T22:07:42.866081'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 18
-Game Duration: 23.22 seconds
+Game Duration: 17.36 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 3], 'timestamp': '2025-12-17T22:02:44.240945'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 2], 'timestamp': '2025-12-17T22:07:43.871097'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 19
-Game Duration: 24.52 seconds
+Game Duration: 18.36 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 0], 'timestamp': '2025-12-17T22:02:45.457957'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 0], 'timestamp': '2025-12-17T22:07:45.641735'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 20
-Game Duration: 25.73 seconds
+Game Duration: 20.13 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 0], 'timestamp': '2025-12-17T22:02:47.407523'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 3], 'timestamp': '2025-12-17T22:07:46.172041'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 21
-Game Duration: 27.69 seconds
+Game Duration: 20.66 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 0], 'timestamp': '2025-12-17T22:02:48.160532'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 0], 'timestamp': '2025-12-17T22:07:47.876287'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 22
-Game Duration: 28.43 seconds
+Game Duration: 22.36 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 1], 'timestamp': '2025-12-17T22:02:49.235749'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 4], 'timestamp': '2025-12-17T22:07:49.734216'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 23
-Game Duration: 29.51 seconds
+Game Duration: 24.22 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 2], 'timestamp': '2025-12-17T22:02:50.169842'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 4], 'timestamp': '2025-12-17T22:07:50.917480'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 24
-Game Duration: 30.45 seconds
+Game Duration: 25.41 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 1], 'timestamp': '2025-12-17T22:02:50.877719'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 3], 'timestamp': '2025-12-17T22:07:52.346320'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 25
-Game Duration: 31.15 seconds
+Game Duration: 26.84 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 0], 'timestamp': '2025-12-17T22:02:51.631503'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 3], 'timestamp': '2025-12-17T22:07:53.817084'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 26
-Game Duration: 31.91 seconds
+Game Duration: 28.31 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 3], 'timestamp': '2025-12-17T22:02:52.382480'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 4], 'timestamp': '2025-12-17T22:07:55.073462'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 27
-Game Duration: 32.66 seconds
+Game Duration: 29.57 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 4], 'timestamp': '2025-12-17T22:02:54.085861'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 1], 'timestamp': '2025-12-17T22:07:56.705007'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 28
-Game Duration: 34.36 seconds
+Game Duration: 31.19 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 1], 'timestamp': '2025-12-17T22:02:55.224615'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 0], 'timestamp': '2025-12-17T22:07:58.407782'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 29
-Game Duration: 35.50 seconds
+Game Duration: 32.90 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 0], 'timestamp': '2025-12-17T22:02:56.118454'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 0], 'timestamp': '2025-12-17T22:07:59.522091'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 30
-Game Duration: 36.40 seconds
+Game Duration: 34.01 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 4], 'timestamp': '2025-12-17T22:02:57.339167'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 0], 'timestamp': '2025-12-17T22:08:00.941292'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 31
-Game Duration: 37.62 seconds
+Game Duration: 35.43 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 2], 'timestamp': '2025-12-17T22:02:59.283321'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 4], 'timestamp': '2025-12-17T22:08:01.906054'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 32
-Game Duration: 39.57 seconds
+Game Duration: 36.40 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 0], 'timestamp': '2025-12-17T22:03:01.189393'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 1], 'timestamp': '2025-12-17T22:08:02.567826'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 33
-Game Duration: 41.47 seconds
+Game Duration: 37.06 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 2], 'timestamp': '2025-12-17T22:03:02.300072'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 3], 'timestamp': '2025-12-17T22:08:04.069334'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 34
-Game Duration: 42.58 seconds
+Game Duration: 38.56 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 1], 'timestamp': '2025-12-17T22:03:04.213252'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 4], 'timestamp': '2025-12-17T22:08:04.778702'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 35
-Game Duration: 44.49 seconds
+Game Duration: 39.27 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 3], 'timestamp': '2025-12-17T22:03:05.415216'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 1], 'timestamp': '2025-12-17T22:08:06.634692'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 36
-Game Duration: 45.69 seconds
+Game Duration: 41.12 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 3], 'timestamp': '2025-12-17T22:03:06.010397'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 1], 'timestamp': '2025-12-17T22:08:07.646527'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 37
-Game Duration: 46.29 seconds
+Game Duration: 42.13 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 2], 'timestamp': '2025-12-17T22:03:07.667037'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 1], 'timestamp': '2025-12-17T22:08:09.244421'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 38
-Game Duration: 47.95 seconds
+Game Duration: 43.73 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 3], 'timestamp': '2025-12-17T22:03:09.311418'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 1], 'timestamp': '2025-12-17T22:08:10.843507'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 39
-Game Duration: 49.59 seconds
+Game Duration: 45.33 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 3], 'timestamp': '2025-12-17T22:03:10.654529'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 0], 'timestamp': '2025-12-17T22:08:11.380279'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 40
-Game Duration: 50.93 seconds
+Game Duration: 45.87 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 0], 'timestamp': '2025-12-17T22:03:12.037882'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 4], 'timestamp': '2025-12-17T22:08:13.221040'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 41
-Game Duration: 52.32 seconds
+Game Duration: 47.72 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 1], 'timestamp': '2025-12-17T22:03:12.953852'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 1], 'timestamp': '2025-12-17T22:08:14.114860'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 42
-Game Duration: 53.23 seconds
+Game Duration: 48.61 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 3], 'timestamp': '2025-12-17T22:03:14.512706'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 1], 'timestamp': '2025-12-17T22:08:14.647966'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 43
-Game Duration: 54.79 seconds
+Game Duration: 49.14 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 0], 'timestamp': '2025-12-17T22:03:16.038118'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 0], 'timestamp': '2025-12-17T22:08:16.140280'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 44
-Game Duration: 56.31 seconds
+Game Duration: 50.63 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 2], 'timestamp': '2025-12-17T22:03:17.824001'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 0], 'timestamp': '2025-12-17T22:08:16.869450'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 45
-Game Duration: 58.10 seconds
+Game Duration: 51.36 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 4], 'timestamp': '2025-12-17T22:03:19.589575'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 1], 'timestamp': '2025-12-17T22:08:17.618377'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 46
-Game Duration: 59.87 seconds
+Game Duration: 52.11 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 3], 'timestamp': '2025-12-17T22:03:21.433539'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 2], 'timestamp': '2025-12-17T22:08:18.467204'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 47
-Game Duration: 61.71 seconds
+Game Duration: 52.96 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 1], 'timestamp': '2025-12-17T22:03:22.538453'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 0], 'timestamp': '2025-12-17T22:08:19.295387'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 48
-Game Duration: 62.82 seconds
+Game Duration: 53.78 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 2], 'timestamp': '2025-12-17T22:03:24.517463'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 1], 'timestamp': '2025-12-17T22:08:19.989987'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 49
-Game Duration: 64.79 seconds
+Game Duration: 54.48 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 1], 'timestamp': '2025-12-17T22:03:25.712875'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 0], 'timestamp': '2025-12-17T22:08:20.561550'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 50
-Game Duration: 65.99 seconds
+Game Duration: 55.05 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 0], 'timestamp': '2025-12-17T22:03:26.424525'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 4], 'timestamp': '2025-12-17T22:08:21.681474'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 51
-Game Duration: 66.71 seconds
+Game Duration: 56.17 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 1], 'timestamp': '2025-12-17T22:03:28.333038'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 3], 'timestamp': '2025-12-17T22:08:22.187181'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 52
-Game Duration: 68.61 seconds
+Game Duration: 56.68 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 2], 'timestamp': '2025-12-17T22:03:29.244740'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 3], 'timestamp': '2025-12-17T22:08:24.003513'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 53
-Game Duration: 69.52 seconds
+Game Duration: 58.49 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 2], 'timestamp': '2025-12-17T22:03:29.788801'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 1], 'timestamp': '2025-12-17T22:08:25.359966'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 54
-Game Duration: 70.07 seconds
+Game Duration: 59.85 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 1], 'timestamp': '2025-12-17T22:03:31.450775'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 3], 'timestamp': '2025-12-17T22:08:26.908397'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 55
-Game Duration: 71.73 seconds
+Game Duration: 61.40 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 4], 'timestamp': '2025-12-17T22:03:32.797066'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 4], 'timestamp': '2025-12-17T22:08:28.107689'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 56
-Game Duration: 73.07 seconds
+Game Duration: 62.60 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 1], 'timestamp': '2025-12-17T22:03:34.430036'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 2], 'timestamp': '2025-12-17T22:08:29.700204'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 57
-Game Duration: 74.71 seconds
+Game Duration: 64.19 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 3], 'timestamp': '2025-12-17T22:03:35.154105'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 0], 'timestamp': '2025-12-17T22:08:31.230218'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 58
-Game Duration: 75.43 seconds
+Game Duration: 65.72 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 4], 'timestamp': '2025-12-17T22:03:36.171905'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 0], 'timestamp': '2025-12-17T22:08:32.908252'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 59
-Game Duration: 76.45 seconds
+Game Duration: 67.40 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 1], 'timestamp': '2025-12-17T22:03:37.638017'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 4], 'timestamp': '2025-12-17T22:08:34.022050'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 60
-Game Duration: 77.91 seconds
+Game Duration: 68.51 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 0], 'timestamp': '2025-12-17T22:03:39.016868'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 4], 'timestamp': '2025-12-17T22:08:34.757391'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 61
-Game Duration: 79.29 seconds
+Game Duration: 69.25 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 2], 'timestamp': '2025-12-17T22:03:40.262432'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 4], 'timestamp': '2025-12-17T22:08:36.737263'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 62
-Game Duration: 80.54 seconds
+Game Duration: 71.23 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 2], 'timestamp': '2025-12-17T22:03:41.988614'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [1, 4], 'timestamp': '2025-12-17T22:08:37.477865'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 63
-Game Duration: 82.27 seconds
+Game Duration: 71.97 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 0], 'timestamp': '2025-12-17T22:03:42.800933'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 4], 'timestamp': '2025-12-17T22:08:38.639198'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 64
-Game Duration: 83.08 seconds
+Game Duration: 73.13 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 4], 'timestamp': '2025-12-17T22:03:43.634047'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 0], 'timestamp': '2025-12-17T22:08:39.545234'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 65
-Game Duration: 83.92 seconds
+Game Duration: 74.04 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 3], 'timestamp': '2025-12-17T22:03:45.194076'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 2], 'timestamp': '2025-12-17T22:08:40.125194'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 66
-Game Duration: 85.47 seconds
+Game Duration: 74.62 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 3], 'timestamp': '2025-12-17T22:03:45.738444'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 1], 'timestamp': '2025-12-17T22:08:41.222941'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 67
-Game Duration: 86.02 seconds
+Game Duration: 75.71 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [2, 3], 'timestamp': '2025-12-17T22:03:47.351961'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 4], 'timestamp': '2025-12-17T22:08:42.013208'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 68
-Game Duration: 87.63 seconds
+Game Duration: 76.50 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 4], 'timestamp': '2025-12-17T22:03:48.961375'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 2], 'timestamp': '2025-12-17T22:08:43.576773'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 69
-Game Duration: 89.24 seconds
+Game Duration: 78.07 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 3], 'timestamp': '2025-12-17T22:03:49.583734'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [0, 4], 'timestamp': '2025-12-17T22:08:44.633890'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 70
-Game Duration: 89.86 seconds
+Game Duration: 79.12 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 1], 'timestamp': '2025-12-17T22:03:50.613954'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [4, 2], 'timestamp': '2025-12-17T22:08:46.386167'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 71
-Game Duration: 90.89 seconds
+Game Duration: 80.88 seconds
 Accuracy: 0.00%
 ==================
 
-Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 2], 'timestamp': '2025-12-17T22:03:51.250869'}
+Dot appeared: {'event_type': 'dot_appeared', 'position': [3, 4], 'timestamp': '2025-12-17T22:08:47.225544'}
 
 === GAME STATE ===
 Score: 0
 Misses: 0
 Total Dots: 72
-Game Duration: 91.53 seconds
+Game Duration: 81.71 seconds
 Accuracy: 0.00%
 ==================

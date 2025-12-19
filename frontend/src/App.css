@@ -1,0 +1,169 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f0f0;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-top: 0;
+  color: #61dafb;
+}
+
+.game-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.progress-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-container label {
+  width: 80px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 20px;
+  background-color: #3a3f4b;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar .progress-fill {
+  height: 100%;
+  background-color: #61dafb;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-bar.mistake-bar .progress-fill {
+  background-color: #ff6b6b;
+}
+
+.grid-container {
+  display: inline-block;
+  border: 2px solid #61dafb;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #1a1c22;
+}
+
+.grid-row {
+  display: flex;
+}
+
+.grid-cell {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.grid-cell:hover {
+  background-color: #3a3f4b;
+}
+
+.dot {
+  background-color: #61dafb;
+  border-radius: 50%;
+}
+
+.dot-symbol {
+  font-size: 30px;
+  color: #ffffff;
+  animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}
+
+.controls {
+  margin: 20px 0;
+}
+
+button {
+  background-color: #61dafb;
+  border: none;
+  color: #282c34;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #21a9c7;
+}
+
+.game-over {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ff6b6b;
+  border-radius: 5px;
+  color: white;
+}
+
+.game-over.win {
+  background-color: #61dafb;
+}
+
+.game-over h2 {
+  margin: 0 0 10px 0;
+}

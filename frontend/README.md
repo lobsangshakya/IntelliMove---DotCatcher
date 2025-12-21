@@ -1,1 +1,0 @@
-A simple game where dots appear randomly on a grid, the player has to press/click them in real-time. Kafka streams all dot appearances, user actions, and misses to a backend dashboard. Track misses, score, and game duration.

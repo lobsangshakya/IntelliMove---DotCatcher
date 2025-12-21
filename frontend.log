@@ -3,9 +3,8 @@
 > vite
 
 You are using Node.js 22.11.0. Vite requires Node.js version 20.19+ or 22.12+. Please upgrade your Node.js version.
-Port 5173 is in use, trying another one...
 
-  VITE v7.2.7  ready in 228 ms
+  VITE v7.2.7  ready in 650 ms
 
-  ➜  Local:   http://localhost:5174/
+  ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose

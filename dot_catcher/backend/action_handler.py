@@ -3,12 +3,14 @@ from kafka import KafkaProducer
 import json
 
 app = Flask(__name__)
+
+# Kafka producer
 producer = KafkaProducer(
     bootstrap_servers='localhost:9092',
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
 
-@app.route('/catch_dot', methods=['POST'])
+@app.post('/catch_dot')
 def catch_dot():
     data = request.get_json() or {}
     if 'position' not in data:

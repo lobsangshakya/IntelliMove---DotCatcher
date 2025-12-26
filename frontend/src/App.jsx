@@ -12,6 +12,49 @@ function App() {
   const [targetScore] = useState(10);
   const [maxMisses] = useState(5);
   const socketRef = useRef(null);
+  const dotTimeoutsRef = useRef(new Map()); // Track timeouts for each dot
+  const animationFrameRef = useRef(null); // Track animation frames
+  const activeAnimationsRef = useRef(new Map()); // Track active animations
+
+  // Single animation loop that handles all dots using requestAnimationFrame
+  const animateAllDots = () => {
+    const now = Date.now();
+    const dotsToRemove = [];
+    
+    // Iterate through active animations to see which ones need to be removed
+    activeAnimationsRef.current.forEach((animation, dotId) => {
+      const { x, y, startTime, duration } = animation;
+      if (now - startTime >= duration) {
+        dotsToRemove.push({ x, y, dotId });
+      }
+    });
+    
+    // Remove expired dots in a single state update
+    if (dotsToRemove.length > 0) {
+      setGrid(prevGrid => {
+        const newGrid = prevGrid.map(row => [...row]);
+        dotsToRemove.forEach(({ x, y, dotId }) => {
+          if (newGrid[x][y]) {
+            newGrid[x][y] = false;
+            // Notify server that dot was missed
+            socketRef.current.emit('catch_dot', {
+              position: [x, y],
+              timestamp: new Date().toISOString(),
+              event_type: 'dot_missed'
+            });
+          }
+          // Remove from active animations
+          activeAnimationsRef.current.delete(dotId);
+        });
+        return newGrid;
+      });
+    }
+    
+    // Continue animation loop if there are active animations
+    if (activeAnimationsRef.current.size > 0) {
+      animationFrameRef.current = requestAnimationFrame(animateAllDots);
+    }
+  };
 
   // Initialize grid and WebSocket connection
   useEffect(() => {
@@ -35,22 +78,29 @@ function App() {
         return newGrid;
       });
       
-      // Set a timeout to hide the dot if not clicked
-      setTimeout(() => {
-        setGrid(prevGrid => {
-          const updatedGrid = prevGrid.map(row => [...row]);
-          if (updatedGrid[x][y]) {
-            updatedGrid[x][y] = false;
-            // Notify server that dot was missed
-            socketRef.current.emit('catch_dot', {
-              position: [x, y],
-              timestamp: new Date().toISOString(),
-              event_type: 'dot_missed'
-            });
-          }
-          return updatedGrid;
-        });
-      }, 2000); // Dot disappears after 2 seconds if not caught
+      // Create a timeout ID for this specific dot
+      const dotId = `${x}-${y}`;
+      
+      // Clear any existing timeout for this dot position
+      if (dotTimeoutsRef.current.has(dotId)) {
+        clearTimeout(dotTimeoutsRef.current.get(dotId));
+      }
+      
+      // Start animation using requestAnimationFrame instead of setTimeout
+      const startTime = Date.now();
+      
+      // Store the animation in active animations
+      activeAnimationsRef.current.set(dotId, {
+        x,
+        y,
+        startTime,
+        duration: 2000
+      });
+      
+      // Start the animation loop if not already running
+      if (animationFrameRef.current === null) {
+        animationFrameRef.current = requestAnimationFrame(animateAllDots);
+      }
     });
     
     // Listen for game state updates
@@ -75,13 +125,34 @@ function App() {
       setGameResult(null);
       const newGrid = Array(GRID_SIZE).fill().map(() => Array(GRID_SIZE).fill(false));
       setGrid(newGrid);
+      
+      // Clear all pending timeouts
+      dotTimeoutsRef.current.forEach(timeoutId => clearTimeout(timeoutId));
+      dotTimeoutsRef.current.clear();
+      
+      // Cancel all active animations
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+      activeAnimationsRef.current.clear();
     });
     
-    // Clean up WebSocket connection
+    // Clean up WebSocket connection and timeouts
     return () => {
       if (socketRef.current) {
         socketRef.current.disconnect();
       }
+      
+      // Clear all pending timeouts
+      dotTimeoutsRef.current.forEach(timeoutId => clearTimeout(timeoutId));
+      dotTimeoutsRef.current.clear();
+      
+      // Cancel all active animations
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      activeAnimationsRef.current.clear();
     };
   }, []);
 
@@ -96,6 +167,18 @@ function App() {
         newGrid[x][y] = false;
         return newGrid;
       });
+      
+      // Clear the timeout for this dot since it was caught
+      const dotId = `${x}-${y}`;
+      if (dotTimeoutsRef.current.has(dotId)) {
+        clearTimeout(dotTimeoutsRef.current.get(dotId));
+        dotTimeoutsRef.current.delete(dotId);
+      }
+      
+      // Remove from active animations
+      if (activeAnimationsRef.current.has(dotId)) {
+        activeAnimationsRef.current.delete(dotId);
+      }
       
       // Notify server that dot was caught
       socketRef.current.emit('catch_dot', {

@@ -3,38 +3,22 @@ from kafka import KafkaProducer
 import json
 
 app = Flask(__name__)
+producer = KafkaProducer(
+    bootstrap_servers='localhost:9092',
+    value_serializer=lambda v: json.dumps(v).encode()
+)
 
-# Kafka producer for actions
-producer = None
-
-@app.route('/catch_dot', methods=['POST'])
+@app.post('/catch_dot')
 def catch_dot():
-    """Handle when a user catches a dot"""
-    data = request.json
-    
-    if not data or 'position' not in data:
-        return jsonify({'error': 'Invalid data'}), 400
-    
-    # Send action to Kafka
-    event = {
+    d = request.get_json() or {}
+    if 'position' not in d:
+        return jsonify(error="Invalid data"), 400
+    producer.send('actions', {
         "event_type": "dot_caught",
-        "position": data['position'],
-        "timestamp": data.get('timestamp', ''),
-        "user_id": data.get('user_id', 'anonymous')
-    }
-    
-    try:
-        producer.send('actions', value=event)
-        producer.flush()
-        return jsonify({'status': 'success', 'message': 'Action recorded'})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        "position": d['position'],
+        "timestamp": d.get('timestamp'),
+        "user_id": d.get('user_id', 'anonymous')
+    })
+    return jsonify(status="success")
 
-if __name__ == '__main__':
-    # Initialize Kafka producer
-    producer = KafkaProducer(
-        bootstrap_servers='localhost:9092',
-        value_serializer=lambda v: json.dumps(v).encode('utf-8')
-    )
-    
-    app.run(host='0.0.0.0', port=5002, debug=True)
+app.run(port=5002, debug=True)

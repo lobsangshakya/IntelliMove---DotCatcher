@@ -1,3 +1,16 @@
 *.log
 
 
+*.log
+node_modules/
+.DS_Store
+*.tmp
+*.temp
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+/dist
+/build
+/.vite
+

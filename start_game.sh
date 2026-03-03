@@ -43,26 +43,29 @@ echo "📋 Creating Kafka topics..."
 
 # Start Game Tracker
 echo "📊 Starting Game Tracker..."
-cd /Users/lobsangtseten/Desktop/IntelliMove/dot_catcher/backend
-python3 game_tracker.py > /Users/lobsangtseten/Desktop/IntelliMove/game_tracker.log 2>&1 &
+cd dot_catcher/backend
+python3 game_tracker.py > ../../game_tracker.log 2>&1 &
 TRACKER_PID=$!
 
 # Start Backend Server
 echo "🖥️ Starting Backend Server..."
-cd /Users/lobsangtseten/Desktop/IntelliMove/dot_catcher/backend
-python3 server.py > /Users/lobsangtseten/Desktop/IntelliMove/server.log 2>&1 &
+cd ../.. # Back to root
+cd dot_catcher/backend
+python3 server.py > ../../server.log 2>&1 &
 SERVER_PID=$!
 
 # Start Dot Generator
 echo "🎯 Starting Dot Generator..."
-cd /Users/lobsangtseten/Desktop/IntelliMove/dot_catcher/backend
-python3 dot_generator.py > /Users/lobsangtseten/Desktop/IntelliMove/dot_generator.log 2>&1 &
+cd ../.. # Back to root
+cd dot_catcher/backend
+python3 dot_generator.py > ../../dot_generator.log 2>&1 &
 GENERATOR_PID=$!
 
 # Start Frontend
 echo "🎨 Starting Frontend..."
-cd /Users/lobsangtseten/Desktop/IntelliMove/frontend
-npm run dev > /Users/lobsangtseten/Desktop/IntelliMove/frontend.log 2>&1 &
+cd ../.. # Back to root
+cd frontend
+npm run dev > ../frontend.log 2>&1 &
 FRONTEND_PID=$!
 
 echo "🎮 Dot Catcher Game is now running!"

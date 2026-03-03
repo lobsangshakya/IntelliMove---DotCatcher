@@ -10,14 +10,17 @@ producer = KafkaProducer(
 GRID_SIZE = 5
 
 def generate_dot():
-    producer.send(
-        "dots",
-        {
-            "event_type": "dot_appeared",
-            "position": [random.randint(0, GRID_SIZE-1), random.randint(0, GRID_SIZE-1)],
-            "timestamp": datetime.now().isoformat()
-        }
-    )
+    position = [random.randint(0, GRID_SIZE-1), random.randint(0, GRID_SIZE-1)]
+    event = {
+        "event_type": "dot_appeared",
+        "position": position,
+        "timestamp": datetime.now().isoformat()
+    }
+    
+    print(f"DEBUG: Generating dot at position {position}")
+    producer.send("dots", event)
+    producer.flush()
+    print(f"DEBUG: Sent dot event to Kafka: {event}")
 
 if __name__ == "__main__":
     try:

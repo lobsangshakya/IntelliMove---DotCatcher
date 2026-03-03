@@ -28,41 +28,49 @@ def consume_dots():
     """Consume dot appearance events from Kafka and broadcast to clients"""
     global dots_consumer
     
+    print("DEBUG: Starting dots consumer...")
     dots_consumer = KafkaConsumer(
         'dots',
         bootstrap_servers='localhost:9092',
         value_deserializer=lambda m: json.loads(m.decode('utf-8'))
     )
     
+    print("DEBUG: Dots consumer initialized, waiting for messages...")
     for message in dots_consumer:
         event = message.value
-        print(f"Received dot event: {event}")
+        print(f"DEBUG: Received dot event from Kafka: {event}")
         # Broadcast to all connected clients
+        print(f"DEBUG: Broadcasting dot_appeared to WebSocket clients")
         socketio.emit('dot_appeared', event)
 
 def consume_actions():
     """Consume user action events from Kafka and update game state"""
     global actions_consumer, game_state
     
+    print("DEBUG: Starting actions consumer...")
     actions_consumer = KafkaConsumer(
         'actions',
         bootstrap_servers='localhost:9092',
         value_deserializer=lambda m: json.loads(m.decode('utf-8'))
     )
     
+    print("DEBUG: Actions consumer initialized, waiting for messages...")
     for message in actions_consumer:
         event = message.value
-        print(f"Received action event: {event}")
+        print(f"DEBUG: Received action event from Kafka: {event}")
         
         if event['event_type'] == 'dot_caught':
             game_state['score'] += 1
+            print(f"DEBUG: Score updated to {game_state['score']}")
         elif event['event_type'] == 'dot_missed':
             game_state['misses'] += 1
+            print(f"DEBUG: Misses updated to {game_state['misses']}")
             
         # Check win/lose conditions
         check_game_status()
         
         # Send updated game state to clients
+        print(f"DEBUG: Broadcasting game_state_update: {game_state}")
         socketio.emit('game_state_update', game_state)
 
 def check_game_status():

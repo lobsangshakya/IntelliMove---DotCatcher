@@ -1,11 +1,34 @@
 from kafka import KafkaProducer
-import json, random, time
+import json, random, time, os
 from datetime import datetime
 
-producer = KafkaProducer(
-    bootstrap_servers="localhost:9092",
-    value_serializer=lambda v: json.dumps(v).encode()
-)
+# Get Kafka bootstrap servers from environment variable
+KAFKA_BOOTSTRAP_SERVERS = os.environ.get('KAFKA_BOOTSTRAP_SERVERS', 'localhost:9092')
+
+def create_producer_with_retry():
+    """Create Kafka producer with retry logic"""
+    max_retries = 30
+    retry_delay = 2
+    
+    for attempt in range(max_retries):
+        try:
+            print(f"Attempting to connect to Kafka (attempt {attempt + 1}/{max_retries})...")
+            producer = KafkaProducer(
+                bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+                value_serializer=lambda v: json.dumps(v).encode()
+            )
+            print("Successfully connected to Kafka!")
+            return producer
+        except Exception as e:
+            print(f"Failed to connect to Kafka: {e}")
+            if attempt < max_retries - 1:
+                print(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+            else:
+                print("Max retries reached. Exiting.")
+                exit(1)
+
+producer = create_producer_with_retry()
 
 GRID_SIZE = 5
 
@@ -24,8 +47,22 @@ def generate_dot():
 
 if __name__ == "__main__":
     try:
-        while True:
+        # Randomly choose number of dots to generate (5-7)
+        num_dots = random.randint(5, 7)
+        print(f"Starting dot generation - will create {num_dots} dots")
+        
+        for i in range(num_dots):
+            print(f"Generating dot {i+1}/{num_dots}")
             generate_dot()
-            time.sleep(random.uniform(0.5, 2.0))
+            
+            # Add delay between dots (except after the last one)
+            if i < num_dots - 1:
+                time.sleep(random.uniform(0.5, 2.0))
+        
+        print("Dot generation completed")
+        
     except KeyboardInterrupt:
+        print("Dot generation interrupted by user")
+    finally:
         producer.close()
+        print("Kafka producer closed")

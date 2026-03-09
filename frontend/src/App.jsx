@@ -1,100 +1,122 @@
-import React, { useState, useEffect, useRef } from "react";
-import io from "socket.io-client";
-import "./App.css";
+import { useState, useEffect } from 'react'
+import io from 'socket.io-client'
+import './App.css'
 
-const GRID = 5, TARGET = 10, MAX_MISS = 5;
+function App() {
+  const [dots, setDots] = useState([])
+  const [score, setScore] = useState(0)
+  const [connected, setConnected] = useState(false)
+  const [logs, setLogs] = useState([])
 
-export default function App() {
-  const emptyGrid = () => Array(GRID).fill().map(() => Array(GRID).fill(false));
-  const [grid, setGrid] = useState(emptyGrid);
-  const [score, setScore] = useState(0);
-  const [misses, setMisses] = useState(0);
-  const [gameOver, setGameOver] = useState(false);
-  const [result, setResult] = useState(null);
-  const socket = useRef(null);
+  const addLog = (message) => {
+    setLogs(prev => [...prev.slice(-4), `${new Date().toLocaleTimeString()}: ${message}`])
+    console.log(message)
+  }
 
   useEffect(() => {
-    socket.current = io("http://localhost:5001");
+    addLog('Connecting to WebSocket...')
+    console.log('[FRONTEND] Initializing WebSocket connection to http://localhost:5001')
+    
+    const socket = io('http://localhost:5001', {
+      transports: ['websocket', 'polling'],  // Try websocket first, fallback to polling
+      reconnection: true,
+      reconnectionAttempts: 5,
+      reconnectionDelay: 1000
+    })
 
-    socket.current.on("dot_appeared", ({ position: [x, y] }) => {
-      setGrid(g => {
-        const ng = g.map(r => [...r]);
-        ng[x][y] = true;
-        return ng;
-      });
+    socket.on('connect', () => {
+      addLog('Connected to server!')
+      console.log('[FRONTEND] WebSocket connected successfully')
+      setConnected(true)
+    })
 
+    socket.on('connect_error', (error) => {
+      console.error('[FRONTEND] WebSocket connection error:', error)
+      addLog('Connection error!')
+    })
+
+    socket.on('disconnect', (reason) => {
+      console.log('[FRONTEND] WebSocket disconnected:', reason)
+      addLog('Disconnected: ' + reason)
+      setConnected(false)
+    })
+
+    socket.on('dot_appeared', (data) => {
+      console.log('[FRONTEND] dot_appeared event received:', data)
+      const dotId = Date.now() + Math.random()  // Ensure unique ID
+      addLog(`Dot at [${data.position}]`)
+      setDots(prev => [...prev, { id: dotId, x: data.position[0], y: data.position[1], timestamp: Date.now() }])
+      
+      // Remove this specific dot after 3 seconds
       setTimeout(() => {
-        setGrid(g => {
-          if (!g[x][y]) return g;
-          const ng = g.map(r => [...r]);
-          ng[x][y] = false;
-          socket.current.emit("catch_dot", { position: [x, y], event_type: "dot_missed" });
-          return ng;
-        });
-      }, 2000);
-    });
+        setDots(prev => prev.filter(d => d.id !== dotId))
+      }, 3000)
+    })
 
-    socket.current.on("game_state_update", d => {
-      setScore(d.score || 0);
-      setMisses(d.misses || 0);
-      setGameOver(d.game_over || false);
-    });
+    socket.on('game_state_update', (state) => {
+      console.log('[FRONTEND] game_state_update received:', state)
+      setScore(state.score)
+    })
+    
+    socket.on('game_over', (data) => {
+      console.log('[FRONTEND] game_over event:', data)
+      addLog(`Game ${data.result}!`)
+    })
 
-    socket.current.on("game_over", d => {
-      setResult(d);
-      setGameOver(true);
-    });
+    return () => {
+      console.log('[FRONTEND] Cleaning up WebSocket connection')
+      socket.disconnect()
+    }
+  }, [])
 
-    socket.current.on("game_reset", () => {
-      setGrid(emptyGrid());
-      setScore(0);
-      setMisses(0);
-      setGameOver(false);
-      setResult(null);
-    });
-
-    return () => socket.current.disconnect();
-  }, []);
-
-  const clickCell = (x, y) => {
-    if (gameOver || !grid[x][y]) return;
-    setGrid(g => {
-      const ng = g.map(r => [...r]);
-      ng[x][y] = false;
-      return ng;
-    });
-    socket.current.emit("catch_dot", { position: [x, y], event_type: "dot_caught" });
-  };
+  const handleDotClick = (dot) => {
+    addLog(`Clicked dot at [${dot.x}, ${dot.y}]`)
+    // Remove the clicked dot
+    setDots(prev => prev.filter(d => d.id !== dot.id))
+  }
 
   return (
-    <div className="App">
-      <h1>Dot Catcher</h1>
-      <p>Score: {score}/{TARGET} | Misses: {misses}/{MAX_MISS}</p>
-
-      <div className="grid-container">
-        {grid.map((r, x) => (
-          <div key={x} className="grid-row">
-            {r.map((c, y) => (
-              <div
-                key={y}
-                className={`grid-cell ${c ? "dot" : ""}`}
-                onClick={() => clickCell(x, y)}
-              >
-                {c && "●"}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-
-      <button onClick={() => socket.current.emit("reset_game")}>Reset</button>
-
-      {gameOver && (
-        <div className="game-over">
-          <h2>{result?.result === "win" ? "🎉 You Won!" : "😢 Game Over"}</h2>
-          <p>{result?.message}</p>
+    <div className="app">
+      <header className="header">
+        <h1>Dot Catcher</h1>
+        <div className="stats">
+          <span className={`status ${connected ? 'connected' : 'disconnected'}`}>
+            {connected ? 'Connected' : 'Disconnected'}
+          </span>
+          <span className="score">Score: {score}</span>
         </div>
-      )}
+      </header>
+
+      <main className="game-container">
+        <div className="grid">
+          {Array.from({ length: 5 }, (_, row) => (
+            <div key={row} className="row">
+              {Array.from({ length: 5 }, (_, col) => {
+                const dot = dots.find(d => d.x === row && d.y === col)
+                return (
+                  <div key={col} className="cell">
+                    {dot && (
+                      <div 
+                        className="dot"
+                        onClick={() => handleDotClick(dot)}
+                      />
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          ))}
+        </div>
+      </main>
+
+      <aside className="logs">
+        <h3>Event Logs</h3>
+        {logs.map((log, i) => (
+          <div key={i} className="log-line">{log}</div>
+        ))}
+      </aside>
     </div>
-  );
+  )
 }
+
+export default App

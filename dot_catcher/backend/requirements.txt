@@ -1,0 +1,4 @@
+kafka-python==2.0.2
+flask==3.0.0
+flask-socketio==5.3.6
+python-socketio==5.9.0

@@ -4,9 +4,14 @@ from kafka import KafkaConsumer, KafkaProducer
 import json
 import threading
 import time
+import os
+
+# Get Kafka bootstrap servers from environment variable
+KAFKA_BOOTSTRAP_SERVERS = os.environ.get('KAFKA_BOOTSTRAP_SERVERS', 'localhost:9092')
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="*")
+# Enable CORS and allow all origins for WebSocket
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
 
 # Kafka consumers
 dots_consumer = None
@@ -31,7 +36,7 @@ def consume_dots():
     print("DEBUG: Starting dots consumer...")
     dots_consumer = KafkaConsumer(
         'dots',
-        bootstrap_servers='localhost:9092',
+        bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
         value_deserializer=lambda m: json.loads(m.decode('utf-8'))
     )
     
@@ -39,9 +44,10 @@ def consume_dots():
     for message in dots_consumer:
         event = message.value
         print(f"DEBUG: Received dot event from Kafka: {event}")
-        # Broadcast to all connected clients
-        print(f"DEBUG: Broadcasting dot_appeared to WebSocket clients")
+        # Broadcast to all connected clients using socketio.emit (thread-safe)
+        print(f"DEBUG: Broadcasting dot_appeared to WebSocket clients: {event}")
         socketio.emit('dot_appeared', event)
+        print(f"DEBUG: Broadcast complete for dot at {event.get('position')}")
 
 def consume_actions():
     """Consume user action events from Kafka and update game state"""
@@ -50,7 +56,7 @@ def consume_actions():
     print("DEBUG: Starting actions consumer...")
     actions_consumer = KafkaConsumer(
         'actions',
-        bootstrap_servers='localhost:9092',
+        bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
         value_deserializer=lambda m: json.loads(m.decode('utf-8'))
     )
     
@@ -99,9 +105,10 @@ def index():
 
 @socketio.on('connect')
 def handle_connect():
-    print('Client connected')
+    print('Client connected - SID: {}'.format(request.sid if hasattr(request, 'sid') else 'unknown'))
     # Send current game state to newly connected client
     emit('game_state_update', game_state)
+    print(f'Game state sent to client: {game_state}')
 
 @socketio.on('disconnect')
 def handle_disconnect():
@@ -138,11 +145,28 @@ def handle_reset_game():
     socketio.emit('game_state_update', game_state)
 
 if __name__ == '__main__':
-    # Initialize Kafka producer
-    actions_producer = KafkaProducer(
-        bootstrap_servers='localhost:9092',
-        value_serializer=lambda v: json.dumps(v).encode('utf-8')
-    )
+    # Initialize Kafka producer with retry logic
+    max_retries = 30
+    retry_delay = 2
+    actions_producer = None
+    
+    for attempt in range(max_retries):
+        try:
+            print(f"Attempting to connect to Kafka (attempt {attempt + 1}/{max_retries})...")
+            actions_producer = KafkaProducer(
+                bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+                value_serializer=lambda v: json.dumps(v).encode('utf-8')
+            )
+            print("Successfully connected to Kafka!")
+            break
+        except Exception as e:
+            print(f"Failed to connect to Kafka: {e}")
+            if attempt < max_retries - 1:
+                print(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+            else:
+                print("Max retries reached. Exiting.")
+                exit(1)
     
     # Start Kafka consumers in separate threads
     dots_thread = threading.Thread(target=consume_dots, daemon=True)
@@ -152,4 +176,4 @@ if __name__ == '__main__':
     actions_thread.start()
     
     # Start Flask server
-    socketio.run(app, host='0.0.0.0', port=5001, debug=True, use_reloader=False)
+    socketio.run(app, host='0.0.0.0', port=5001, debug=True, use_reloader=False, allow_unsafe_werkzeug=True)

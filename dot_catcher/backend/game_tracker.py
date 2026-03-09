@@ -1,5 +1,8 @@
 from kafka import KafkaConsumer
-import json, threading, time
+import json, threading, time, os
+
+# Get Kafka bootstrap servers from environment variable
+KAFKA_BOOTSTRAP_SERVERS = os.environ.get('KAFKA_BOOTSTRAP_SERVERS', 'localhost:9092')
 
 # Game state
 game_state = {
@@ -9,12 +12,29 @@ game_state = {
     "start_time": time.time()
 }
 
-def create_consumer(topic):
-    return KafkaConsumer(
-        topic,
-        bootstrap_servers="localhost:9092",
-        value_deserializer=lambda m: json.loads(m.decode())
-    )
+def create_consumer_with_retry(topic):
+    """Create Kafka consumer with retry logic"""
+    max_retries = 30
+    retry_delay = 2
+    
+    for attempt in range(max_retries):
+        try:
+            print(f"Attempting to connect to Kafka for topic '{topic}' (attempt {attempt + 1}/{max_retries})...")
+            consumer = KafkaConsumer(
+                topic,
+                bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+                value_deserializer=lambda m: json.loads(m.decode())
+            )
+            print(f"Successfully connected to Kafka for topic '{topic}'!")
+            return consumer
+        except Exception as e:
+            print(f"Failed to connect to Kafka: {e}")
+            if attempt < max_retries - 1:
+                print(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+            else:
+                print("Max retries reached. Exiting.")
+                exit(1)
 
 def update_duration():
     return time.time() - game_state["start_time"]
@@ -36,14 +56,14 @@ Accuracy: {accuracy:.2f}%
 
 def consume_dots():
     print("Dot consumer started...")
-    for msg in create_consumer("dots"):
+    for msg in create_consumer_with_retry("dots"):
         print(f"Dot appeared: {msg.value}")
         game_state["total_dots"] += 1
         print_game_state()
 
 def consume_actions():
     print("Action consumer started...")
-    for msg in create_consumer("actions"):
+    for msg in create_consumer_with_retry("actions"):
         event = msg.value
         print(f"Action received: {event}")
 

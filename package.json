@@ -1,0 +1,13 @@
+{
+  "name": "intellimove-dot-catcher",
+  "version": "1.0.0",
+  "description": "Real-time dot catching game with Kafka backend",
+  "scripts": {
+    "dev": "docker compose up --build",
+    "stop": "docker compose down",
+    "clean": "docker compose down -v --remove-orphans"
+  },
+  "keywords": ["game", "kafka", "real-time", "websocket"],
+  "author": "IntelliMove Team",
+  "license": "MIT"
+}

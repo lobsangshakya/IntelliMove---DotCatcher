@@ -13,65 +13,77 @@ function App() {
     console.log(message)
   }
 
+  const [socket, setSocket] = useState(null)
+
   useEffect(() => {
     addLog('Connecting to WebSocket...')
     console.log('[FRONTEND] Initializing WebSocket connection to http://localhost:5001')
     
-    const socket = io('http://localhost:5001', {
-      transports: ['websocket', 'polling'],  // Try websocket first, fallback to polling
+    const newSocket = io('http://localhost:5001', {
+      transports: ['websocket', 'polling'],
       reconnection: true,
       reconnectionAttempts: 5,
       reconnectionDelay: 1000
     })
 
-    socket.on('connect', () => {
+    setSocket(newSocket)
+
+    newSocket.on('connect', () => {
       addLog('Connected to server!')
       console.log('[FRONTEND] WebSocket connected successfully')
       setConnected(true)
     })
 
-    socket.on('connect_error', (error) => {
+    newSocket.on('connect_error', (error) => {
       console.error('[FRONTEND] WebSocket connection error:', error)
       addLog('Connection error!')
     })
 
-    socket.on('disconnect', (reason) => {
+    newSocket.on('disconnect', (reason) => {
       console.log('[FRONTEND] WebSocket disconnected:', reason)
       addLog('Disconnected: ' + reason)
       setConnected(false)
     })
 
-    socket.on('dot_appeared', (data) => {
+    newSocket.on('dot_appeared', (data) => {
       console.log('[FRONTEND] dot_appeared event received:', data)
-      const dotId = Date.now() + Math.random()  // Ensure unique ID
+      const dotId = Date.now() + Math.random()
       addLog(`Dot at [${data.position}]`)
       setDots(prev => [...prev, { id: dotId, x: data.position[0], y: data.position[1], timestamp: Date.now() }])
       
-      // Remove this specific dot after 3 seconds
       setTimeout(() => {
         setDots(prev => prev.filter(d => d.id !== dotId))
       }, 3000)
     })
 
-    socket.on('game_state_update', (state) => {
+    newSocket.on('game_state_update', (state) => {
       console.log('[FRONTEND] game_state_update received:', state)
       setScore(state.score)
     })
     
-    socket.on('game_over', (data) => {
+    newSocket.on('game_over', (data) => {
       console.log('[FRONTEND] game_over event:', data)
       addLog(`Game ${data.result}!`)
     })
 
     return () => {
       console.log('[FRONTEND] Cleaning up WebSocket connection')
-      socket.disconnect()
+      newSocket.disconnect()
     }
   }, [])
 
   const handleDotClick = (dot) => {
     addLog(`Clicked dot at [${dot.x}, ${dot.y}]`)
-    // Remove the clicked dot
+    
+    if (socket && connected) {
+      socket.emit('catch_dot', {
+        event_type: 'dot_caught',
+        position: [dot.x, dot.y],
+        timestamp: new Date().toISOString()
+      })
+    }
+
+    // Remove the clicked dot locally immediately for responsiveness
     setDots(prev => prev.filter(d => d.id !== dot.id))
   }
 

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_socketio import SocketIO, emit
 from kafka import KafkaConsumer, KafkaProducer
 import json

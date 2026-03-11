@@ -47,19 +47,20 @@ def generate_dot():
 
 if __name__ == "__main__":
     try:
-        # Randomly choose number of dots to generate (5-7)
-        num_dots = random.randint(5, 7)
-        print(f"Starting dot generation - will create {num_dots} dots")
-        
-        for i in range(num_dots):
-            print(f"Generating dot {i+1}/{num_dots}")
-            generate_dot()
+        print("Starting continuous dot generation...")
+        while True:
+            # Randomly choose number of dots to generate (5-7)
+            num_dots = random.randint(5, 7)
+            print(f"Generating batch of {num_dots} dots")
             
-            # Add delay between dots (except after the last one)
-            if i < num_dots - 1:
+            for i in range(num_dots):
+                generate_dot()
+                
+                # Add delay between dots
                 time.sleep(random.uniform(0.5, 2.0))
-        
-        print("Dot generation completed")
+            
+            print("Batch completed, waiting before next batch...")
+            time.sleep(2.0)  # Wait 2 seconds between batches
         
     except KeyboardInterrupt:
         print("Dot generation interrupted by user")

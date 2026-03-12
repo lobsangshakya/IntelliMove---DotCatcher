@@ -47,23 +47,34 @@ def generate_dot():
 
 if __name__ == "__main__":
     try:
-        print("Starting continuous dot generation...")
+        print("=" * 60)
+        print("DOT GENERATOR STARTED")
+        print("=" * 60)
+        print("Will generate continuous batches of 5-7 dots for demo...")
+        print("Each batch has random delays between dots (0.5-2s)")
+        print("Batch delay: 3 seconds")
+        print("=" * 60)
+        
+        batch_count = 0
+        
         while True:
-            # Randomly choose number of dots to generate (5-7)
+            batch_count += 1
+            # Generate only 5-7 dots per batch for demo purposes
             num_dots = random.randint(5, 7)
-            print(f"Generating batch of {num_dots} dots")
+            print(f"\n[BATCH {batch_count}] Generating {num_dots} dots...")
             
             for i in range(num_dots):
                 generate_dot()
                 
-                # Add delay between dots
-                time.sleep(random.uniform(0.5, 2.0))
+                # Add delay between dots (0.5-2 seconds)
+                delay = random.uniform(0.5, 2.0)
+                time.sleep(delay)
             
-            print("Batch completed, waiting before next batch...")
-            time.sleep(2.0)  # Wait 2 seconds between batches
+            print(f"[BATCH {batch_count}] Complete! Waiting 3 seconds before next batch...")
+            time.sleep(3)  # Wait 3 seconds between batches
         
     except KeyboardInterrupt:
-        print("Dot generation interrupted by user")
+        print("\nDot generation interrupted by user")
     finally:
         producer.close()
         print("Kafka producer closed")

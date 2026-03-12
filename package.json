@@ -1,13 +1,16 @@
 {
   "name": "intellimove-dot-catcher",
   "version": "1.0.0",
-  "description": "Real-time dot catching game with Kafka backend",
+  "description": "Real-time dot catching game with Kafka backend - Beginner friendly!",
   "scripts": {
     "dev": "docker compose up --build",
-    "stop": "docker compose down",
-    "clean": "docker compose down -v --remove-orphans"
+    "start": "docker compose up",
+    "stop": "docker compose down --remove-orphans",
+    "clean": "docker compose down -v --remove-orphans",
+    "logs": "docker compose logs -f",
+    "restart": "npm run stop && npm run dev"
   },
-  "keywords": ["game", "kafka", "real-time", "websocket"],
+  "keywords": ["game", "kafka", "real-time", "websocket", "beginner-friendly"],
   "author": "IntelliMove Team",
   "license": "MIT"
 }

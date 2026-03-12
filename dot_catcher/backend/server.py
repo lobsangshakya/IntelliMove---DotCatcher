@@ -34,13 +34,33 @@ def consume_dots():
     global dots_consumer
     
     print("DEBUG: Starting dots consumer...")
-    dots_consumer = KafkaConsumer(
-        'dots',
-        bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
-        value_deserializer=lambda m: json.loads(m.decode('utf-8'))
-    )
     
-    print("DEBUG: Dots consumer initialized, waiting for messages...")
+    # Retry logic for Kafka consumer
+    max_retries = 30
+    retry_delay = 2
+    
+    for attempt in range(max_retries):
+        try:
+            print(f"Attempting to create dots consumer (attempt {attempt + 1}/{max_retries})...")
+            dots_consumer = KafkaConsumer(
+                'dots',
+                bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+                value_deserializer=lambda m: json.loads(m.decode('utf-8')),
+                auto_offset_reset='latest',
+                enable_auto_commit=True
+            )
+            print("DEBUG: Dots consumer initialized successfully!")
+            break
+        except Exception as e:
+            print(f"Failed to create dots consumer: {e}")
+            if attempt < max_retries - 1:
+                print(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+            else:
+                print("Max retries reached for dots consumer. Exiting.")
+                exit(1)
+    
+    print("DEBUG: Waiting for messages on 'dots' topic...")
     for message in dots_consumer:
         event = message.value
         print(f"DEBUG: Received dot event from Kafka: {event}")
@@ -54,13 +74,33 @@ def consume_actions():
     global actions_consumer, game_state
     
     print("DEBUG: Starting actions consumer...")
-    actions_consumer = KafkaConsumer(
-        'actions',
-        bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
-        value_deserializer=lambda m: json.loads(m.decode('utf-8'))
-    )
     
-    print("DEBUG: Actions consumer initialized, waiting for messages...")
+    # Retry logic for Kafka consumer
+    max_retries = 30
+    retry_delay = 2
+    
+    for attempt in range(max_retries):
+        try:
+            print(f"Attempting to create actions consumer (attempt {attempt + 1}/{max_retries})...")
+            actions_consumer = KafkaConsumer(
+                'actions',
+                bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+                value_deserializer=lambda m: json.loads(m.decode('utf-8')),
+                auto_offset_reset='latest',
+                enable_auto_commit=True
+            )
+            print("DEBUG: Actions consumer initialized successfully!")
+            break
+        except Exception as e:
+            print(f"Failed to create actions consumer: {e}")
+            if attempt < max_retries - 1:
+                print(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+            else:
+                print("Max retries reached for actions consumer. Exiting.")
+                exit(1)
+    
+    print("DEBUG: Waiting for messages on 'actions' topic...")
     for message in actions_consumer:
         event = message.value
         print(f"DEBUG: Received action event from Kafka: {event}")

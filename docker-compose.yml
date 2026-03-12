@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Zookeeper for Kafka coordination
   zookeeper:
@@ -14,9 +12,10 @@ services:
       - intellimove-network
     healthcheck:
       test: echo stat | nc localhost 2181
-      interval: 10s
+      interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 10
+      start_period: 10s
 
   # Kafka message broker
   kafka:
@@ -38,11 +37,11 @@ services:
     networks:
       - intellimove-network
     healthcheck:
-      test: kafka-broker-api-versions --bootstrap-server localhost:9092
-      interval: 10s
+      test: kafka-broker-api-versions --bootstrap-server localhost:9092 || exit 1
+      interval: 5s
       timeout: 10s
-      retries: 10
-      start_period: 30s
+      retries: 20
+      start_period: 15s
 
   # Backend WebSocket server
   backend-server:
@@ -71,7 +70,8 @@ services:
       dockerfile: Dockerfile
     container_name: dot-generator
     depends_on:
-      - backend-server
+      kafka:
+        condition: service_healthy
     environment:
       - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
       - PYTHONUNBUFFERED=1
@@ -93,6 +93,7 @@ services:
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
+      - VITE_WEBSOCKET_URL=http://localhost:5001
     volumes:
       - ./frontend:/app
       - /app/node_modules
